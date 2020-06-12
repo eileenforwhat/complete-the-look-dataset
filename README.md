@@ -122,7 +122,7 @@ def convert_to_url(signature):
 ```
 
 #### bounding_box
-The bounding box coordinates are given as normalized values. The coordinates of the top left corner in `(0, 0)` and a bounding box around the entire image would be `(0, 0, 1, 1)`. The bounding box absoluate coordinates are given by: 
+The bounding box coordinates are given as normalized values. The coordinates of the top left corner in `(0, 0)` and a bounding box around the entire image would be `(0, 0, 1, 1)`. The bounding box absolute coordinates are given by:
 ```python
         im_w, im_h = image.size
         box = (x * im_w, y * im_h, (x + width) * im_w, (y + height) * im_h)
