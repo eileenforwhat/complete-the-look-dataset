@@ -1,6 +1,7 @@
 # Complete The Look Dataset
 
-This repository contains the **Pinterest Complete The Look data** used in the following paper: <insert arxiv link> (KDD 2020)
+This repository contains the **Pinterest Complete The Look data** used in the following paper:
+[TODO: insert arxiv link] (KDD 2020)
 
 We include 10% of the training dataset and the entire test dataset.
 Please remember to cite our paper if you find these datasets useful.
@@ -53,7 +54,7 @@ Each image is a collage outfit and each bounding_box represents an item. Multipl
 
 #### image_signature
 The images are represented by a signature, and the corresponding image URL can be obtained via:
-```
+```python
 def convert_to_url(signature):
     prefix = 'http://i.pinimg.com/400x/%s/%s/%s/%s.jpg'
     return prefix % (signature[0:2], signature[2:4], signature[4:6], signature)
@@ -61,13 +62,13 @@ def convert_to_url(signature):
 
 #### bounding_box
 The bounding box coordinates are given as normalized values. The coordinates of the top left corner in `(0, 0)` and a bounding box around the entire image would be `(0, 0, 1, 1)`. The bounding box absoluate coordinates are given by: 
-```
+```python
         im_w, im_h = image.size
         box = (x * im_w, y * im_h, (x + width) * im_w, (y + height) * im_h)
 ```
 
 ## Sampling triplets
-Triplets are sampled from the raw dataset by sampling (anchor, pos, neg) where <anchor, pos> belong to the same outfit but different categories and <pos, neg> belong to different outfits but the same category. Negatives are sampled randomly under these restraints.
+Triplets are sampled from the raw dataset by sampling `(anchor, pos, neg)` where `<anchor, pos>` belong to the same outfit but different categories and `<pos, neg>` belong to different outfits but the same category. Negatives are sampled randomly under these restraints. Script used for sampling is at `scripts/sample_triplets.py`.
 
 
 ## Examples
