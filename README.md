@@ -10,8 +10,8 @@ Please remember to cite our paper if you find these datasets useful.
 #### Overall
 |                       | train      | test       |
 |-------------------    |--------    |--------    |
-| # outfits             | 107895     | 24960      |
-| # fashion objects     | 454351     | 109471     |
+| # outfits             | 107,895     | 24,960      |
+| # fashion objects     | 454,351     | 109,471     |
 | # categories          | 21         | 21         |
 
 #### Number of items per category (top 10)
@@ -41,16 +41,77 @@ Please remember to cite our paper if you find these datasets useful.
 Please refer to paper for more details about the full dataset and how it was generated.
 
 ## Format
-The datasets are provided in TSV format. We have two different versions:
-1) Raw dataset with header:
+The datasets are provided in `TSV` format. We have two different versions:
+1) Raw dataset with header (train and test):
 `(image_signature, bounding_x, bounding_y, bounding_width, bounding_height, label)`
 
-2) Triplet dataset with header:
+2) Triplet dataset with header (train only):
 `(image_signature_anchor, bounding_x_anchor, bounding_y_anchor, bounding_width_anchor, bounding_height_anchor, label,
 image_signature_pos, bounding_x_pos, bounding_y_pos, bounding_width_pos, bounding_height_pos, label,
 image_signature_neg, bounding_x_neg, bounding_y_neg, bounding_width_neg, bounding_height_neg, label)`
 
 Each image is a collage outfit and each bounding_box represents an item. Multiple rows with the same image_signature contain items from the same outfit.
+
+In addition, we've also included the FITB questions created from the raw test dataset in `JSON` format (correct answer at index=0):
+
+```
+[
+    {
+        "question": [
+            {
+                "h": "0.3547391", 
+                "label": "Handbags", 
+                "w": "0.29715955", 
+                "signature": "0139dbef9bcc82bbe4875894cc118132", 
+                "y": "0.27341554", 
+                "x": "0.547215"
+            }, 
+            {
+                "h": "0.95822084", 
+                "label": "Dresses", 
+                "w": "0.48265392", 
+                "signature": "0139dbef9bcc82bbe4875894cc118132", 
+                "y": "0.041779168", 
+                "x": "0.038041957"
+            }
+        ], 
+        "answers": [
+            {
+                "h": "0.24204975", 
+                "label": "Shoes", 
+                "w": "0.33648607", 
+                "signature": "0139dbef9bcc82bbe4875894cc118132", 
+                "y": "0.74930716", 
+                "x": "0.48908612"
+            }, 
+            {
+                "h": "0.3023045", 
+                "label": "Shoes", 
+                "w": "0.3168704", 
+                "signature": "01ce612ba639a9e58f35564856b25a9a", 
+                "y": "0.6709938", 
+                "x": "0.5058815"
+            }, 
+            {
+                "h": "0.40008748", 
+                "label": "Shoes", 
+                "w": "0.33582115", 
+                "signature": "009a5a4515b81f4ce540d35ba67798e4", 
+                "y": "0.57832766", 
+                "x": "0.6554655"
+            }, 
+            {
+                "h": "0.1563462", 
+                "label": "Shoes", 
+                "w": "0.32547513", 
+                "signature": "0113f546bcd41284aeb99d961eacbff3", 
+                "y": "0.75990874", 
+                "x": "0.091433905"
+            }
+        ]
+    }
+    ...
+```
 
 #### image_signature
 The images are represented by a signature, and the corresponding image URL can be obtained via:
@@ -68,7 +129,7 @@ The bounding box coordinates are given as normalized values. The coordinates of 
 ```
 
 ## Sampling triplets
-Triplets are sampled from the raw dataset by sampling `(anchor, pos, neg)` where `<anchor, pos>` belong to the same outfit but different categories and `<pos, neg>` belong to different outfits but the same category. Negatives are sampled randomly under these restraints. Script used for sampling is at `scripts/sample_triplets.py`.
+Triplets are sampled from the raw dataset by sampling `(anchor, pos, neg)` where `<anchor, pos>` belong to the same outfit but different categories and `<pos, neg>` belong to different outfits but the same category. Negatives are sampled randomly under these restraints.
 
 
 ## Examples
