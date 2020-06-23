@@ -1,7 +1,7 @@
 # Complete The Look Dataset
 
 This repository contains the **Pinterest Complete The Look data** used in the following paper:
-[TODO: insert arxiv link] (KDD 2020)
+[https://arxiv.org/abs/2006.10792](https://arxiv.org/abs/2006.10792) [KDD 2020]
 
 We include 10% of the training dataset and the entire test dataset.
 Please remember to cite our paper if you find these datasets useful.
